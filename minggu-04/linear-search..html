@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linear Search Judul Buku</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 400px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pencarian Judul Buku</h2>
+    <input type="text" id="judulInput" placeholder="Masukkan judul buku...">
+    <br>
+    <button onclick="cariBuku()">Cari</button>
+    <p id="result"></p>
+  </div>
+  <script>
+    const buku = ["Algoritma", "Basis Data", "Struktur Data", "Pemrograman Python", "Kesehatan Masyarakat"];
+    function cariBuku() {
+      const judulDicari = document.getElementById("judulInput").value.trim();
+      let ditemukan = false;
+      let pesan = "";
+      for (let i = 0; i < buku.length; i++) {
+        if (buku[i].toLowerCase() === judulDicari.toLowerCase()) {
+          pesan = `Judul "${judulDicari}" ditemukan di indeks ke-${i}`;
+          ditemukan = true;
+          break;
+        }
+      }
+      if (!ditemukan) {
+        pesan = `Judul "${judulDicari}" tidak ditemukan dalam daftar.`;
+      }
+      document.getElementById("result").innerText = pesan;
+    }
+  </script>
+</body>
+</html>
