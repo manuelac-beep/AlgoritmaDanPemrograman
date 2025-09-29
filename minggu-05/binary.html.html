@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pencarian Kata - Binary Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #c8daf1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: rgb(249, 154, 206);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 350px;
+    }
+    h2 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      margin: 8px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background: #ff767d;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #f8778d;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pencarian Kata (Binary Search)</h2>
+    <input type="text" id="searchWord" placeholder="Masukkan kata...">
+    <button onclick="binarySearch()">Cari</button>
+    <p id="result"></p>
+  </div>
+  <script>
+    // Kamus kata (sudah terurut abjad)
+    const dictionary = ["apel", "durian", "jeruk", "mangga", "pisang"];
+    function binarySearch() {
+      let word = document.getElementById("searchWord").value.toLowerCase();
+      let low = 0;
+      let high = dictionary.length - 1;
+      let found = false;
+      while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        if (dictionary[mid] === word) {
+          document.getElementById("result").innerText = 
+            "✅ Kata '" + word + "' ditemukan di kamus!";
+          found = true;
+          break;
+        } else if (dictionary[mid] < word) {
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+      if (!found) {
+        document.getElementById("result").innerText = 
+          "❌ Kata '" + word + "' tidak ditemukan.";
+      }
+    }
+  </script>
+</body>
+</html>
